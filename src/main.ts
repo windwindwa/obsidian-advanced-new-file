@@ -1,6 +1,7 @@
 import { Plugin } from 'obsidian';
 import ChooseFolderModal from './ChooseFolderModal';
 import { NewFileLocation } from './enums';
+import { FileSuggest } from './file-suggest';
 
 export default class AdvancedNewFilePlugin extends Plugin {
   async onload() {

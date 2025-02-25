@@ -8,6 +8,8 @@ import {
 } from 'obsidian';
 import CreateNoteModal from './CreateNoteModal';
 import { NewFileLocation } from './enums';
+import { Modal, TextComponent } from 'obsidian';
+import { FileSuggest } from './file-suggest';
 
 const EMPTY_TEXT = 'No folder found. Press esc to dismiss.';
 const PLACEHOLDER_TEXT = 'Type folder name to fuzzy find.';
@@ -126,8 +128,12 @@ export default class ChooseFolderModal extends FuzzySuggestModal<TFolder> {
 
   onOpen() {
     super.onOpen();
+    
+    // 初始化文件建议功能
+    new FileSuggest(this.inputEl);
+    
     this.inputEl.addEventListener('keydown', this.inputListener);
-  }
+}
 
   onClose() {
     this.inputEl.removeEventListener('keydown', this.inputListener);
